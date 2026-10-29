@@ -1,0 +1,6 @@
+{
+  "name": "Cairo Cosmo Center",
+  "description": "Cairo Cosmo Center - Premier medical aesthetic and plastic surgery clinic in Egypt with online appointment booking, doctor profiles, treatments catalog, and treatment calculator.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

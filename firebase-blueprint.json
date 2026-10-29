@@ -1,0 +1,57 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile representing a patient or clinic client.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "fullName": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "photoUrl": { "type": "string" },
+        "role": { "type": "string", "enum": ["patient", "admin"] },
+        "preferredBranchId": { "type": "string" },
+        "preferredCategory": { "type": "string" },
+        "notesOrMedicalHistory": { "type": "string" },
+        "marketingConsent": { "type": "boolean" },
+        "totalBookingsCount": { "type": "integer" },
+        "vipTier": { "type": "string", "enum": ["standard", "silver", "gold_vip"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "fullName", "email"]
+    },
+    "Appointment": {
+      "title": "Appointment",
+      "description": "Booked appointment for consultation or cosmetic treatment.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "refCode": { "type": "string" },
+        "userId": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "customerEmail": { "type": "string" },
+        "branchId": { "type": "string" },
+        "serviceId": { "type": "string" },
+        "doctorId": { "type": "string" },
+        "date": { "type": "string" },
+        "timeSlot": { "type": "string" },
+        "notes": { "type": "string" },
+        "status": { "type": "string", "enum": ["CONFIRMED", "PENDING", "COMPLETED", "CANCELLED"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "refCode", "customerName", "customerPhone", "branchId", "serviceId", "date", "timeSlot", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Patient user profile documents"
+    },
+    "/appointments/{appointmentId}": {
+      "schema": "Appointment",
+      "description": "Clinic appointments and bookings"
+    }
+  }
+}
